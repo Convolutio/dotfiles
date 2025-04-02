@@ -1,3 +1,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = git@github.com:Convolutio/nvim-config.git
+[submodule "git/.config/git-main"]
+	path = git/.config/git-main
+	url = git@github.com:Convolutio/git-config.git
