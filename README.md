@@ -33,3 +33,9 @@ To remove the settings :
 ```sh
 stow -D <soft-dir> # for example, $ stow -D wezterm
 ```
+
+## Additional config
+
+### Bash
+
+Import the `.bashrc-complete.sh` in the `.bashrc`
