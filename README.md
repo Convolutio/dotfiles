@@ -8,7 +8,7 @@ distributions.
 Clone it in your home directory, with cloning its submodules
 
 ```sh
-git clone --recurse-submodules git@github.com:Convolutio/dotgiles.git
+git clone --recurse-submodules git@github.com:Convolutio/dotfiles.git
 # or
 git clone git@github.com:Convolutio/dotfiles.git
 cd dotfiles
@@ -18,18 +18,26 @@ git submodules update
 
 ## Apply the settings
 
-To apply these settings, please install
-[Stow](https://www.gnu.org/software/stow/).
+1. [Install `nix`](https://nix.dev/install-nix) (in multi-user or single-user mode)
+2. Run this reproducible script
 
-Then, for each software, take its related directory <soft-dir> and run the
-command
+   ```sh
+   ./install-home-config.sh
+   nix run home-manager/master -- switch
+   ```
 
-```sh
-stow <soft-dir> # for example, $ stow wezterm
-```
+3. You can toggle the dotfiles with the now-installed
+   [`stow`](https://www.gnu.org/software/stow/) package
 
-To remove the settings :
+   Then, for each software, take its related directory <soft-dir> and run the
+   command
 
-```sh
-stow -D <soft-dir> # for example, $ stow -D wezterm
-```
+   ```sh
+   stow <soft-dir> # for example, $ stow wezterm
+   ```
+
+   To remove the settings :
+
+   ```sh
+   stow -D <soft-dir> # for example, $ stow -D wezterm
+   ```
