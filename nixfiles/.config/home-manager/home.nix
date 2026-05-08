@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lazyvim, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -68,9 +68,19 @@
   #  /etc/profiles/per-user/thormas/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Imports
+  imports = [ lazyvim.homeManagerModules.default ];
+  
+  # enable programs
+  programs.lazyvim = {
+    enable = true;
+    # Core LazyVim dependencies (git, ripgrep, fd, etc.)
+    installCoreDependencies = true;  # default: true
+  };
 }

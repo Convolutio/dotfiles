@@ -2,5 +2,3 @@
 	path = "~/.config/git-main/main.gitconfig"
 [pull]
 	ff = only
-[core]
-	editor = nvim
