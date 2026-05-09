@@ -81,7 +81,47 @@
   # enable programs
   programs.lazyvim = {
     enable = true;
+
     # Core LazyVim dependencies (git, ripgrep, fd, etc.)
     installCoreDependencies = true;  # default: true
+
+    # Load remaining config from lua files
+    configFiles = ./lazyvim-config;
+
+    extras = {
+        lang.nix = {
+            enable = true;
+            installDependencies = true;
+        };
+        lang.python = {
+            enable = true;
+            installDependencies = false;
+            installRuntimeDependencies = false;
+        };
+        lang.markdown = {
+            enable = true;
+            installDependencies = true;
+        };
+        lang.tex = {
+            enable = true;
+            installDependencies = true;
+        };
+        lang.typst = {
+            enable = true;
+            installDependencies = true;
+        };
+        lang.clangd = {
+            enable = true;
+            installDependencies = true;
+        };
+    };
+
+    # Manual parsers only needed for non-LazyVim languages
+    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
+      bash
+    ];
+
+    # Extra packages
+    # extraPackages = with pkgs; [];
   };
 }
