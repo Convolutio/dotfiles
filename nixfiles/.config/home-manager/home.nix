@@ -1,4 +1,4 @@
-{ config, pkgs, lazyvim, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -22,12 +22,16 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     pkgs.stow
+    pkgs.wezterm
+    pkgs.nerd-fonts.cousine
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
     # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # NB: in Nix >=25.05, the nerd fonts package is referenced as in the actual
+    #     code above
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -76,7 +80,7 @@
   programs.home-manager.enable = true;
 
   # Imports
-  imports = [ lazyvim.homeManagerModules.default ];
+  imports = [ inputs.lazyvim.homeManagerModules.default ];
   
   # enable programs
   programs.lazyvim = {

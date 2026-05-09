@@ -13,7 +13,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, lazyvim, ... }:
+    inputs @ { nixpkgs, home-manager, lazyvim, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,7 +32,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
 	extraSpecialArgs = {
-	  inherit lazyvim;
+          inherit inputs;
 	};
       };
     };
