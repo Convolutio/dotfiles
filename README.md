@@ -19,11 +19,22 @@ git submodules update
 ## Apply the settings
 
 1. [Install `nix`](https://nix.dev/install-nix) (in multi-user or single-user mode)
+   and add this to your bashrc/zshrc/...
+
+   ```bash
+   # >>> Nix >>>
+   . /home/thormas/.nix-profile/etc/profile.d/nix.sh
+   . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+   alias wezterm="nixGL wezterm"
+   # <<< Nix <<<
+   ```
+   ```
+
 2. Run this reproducible script
 
    ```sh
    ./install-home-config.sh
-   nix run home-manager/master -- switch
+   nix run home-manager/master -- switch --impure
    ```
 
 3. You can toggle the dotfiles with the now-installed

@@ -8,15 +8,20 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # WezTerm
+    nixgl.url = "github:nix-community/nixGL";
     # LazyVim
     lazyvim.url = "github:pfassina/lazyvim-nix";
   };
 
   outputs =
-    inputs @ { nixpkgs, home-manager, lazyvim, ... }:
+    inputs @ { nixpkgs, home-manager, nixgl, lazyvim, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ nixgl.overlay ];
+      };
     in
     {
       homeConfigurations."thormas" = home-manager.lib.homeManagerConfiguration {
@@ -31,9 +36,9 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-	extraSpecialArgs = {
+        extraSpecialArgs = {
           inherit inputs;
-	};
+        };
       };
     };
 }

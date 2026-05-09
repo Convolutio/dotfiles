@@ -23,6 +23,7 @@
     # pkgs.hello
     pkgs.stow
     pkgs.wezterm
+    pkgs.nixgl.auto.nixGLDefault
     pkgs.nerd-fonts.cousine
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -75,13 +76,18 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+  # TODO: define this in bash aliases while the shell is not managed by
+  # the home-manager
+  home.shellAliases = {
+    wezterm = "nixGL wezterm";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # Imports
   imports = [ inputs.lazyvim.homeManagerModules.default ];
-  
+
   # enable programs
   programs.lazyvim = {
     enable = true;
