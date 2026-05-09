@@ -89,30 +89,32 @@
     configFiles = ./lazyvim-config;
 
     extras = {
-        lang.nix = {
-            enable = true;
-            installDependencies = true;
-        };
-        lang.python = {
-            enable = true;
-            installDependencies = false;
-            installRuntimeDependencies = false;
-        };
-        lang.markdown = {
-            enable = true;
-            installDependencies = true;
-        };
-        lang.tex = {
-            enable = true;
-            installDependencies = true;
-        };
-        lang.typst = {
-            enable = true;
-            installDependencies = true;
-        };
-        lang.clangd = {
-            enable = true;
-            installDependencies = true;
+        lang = {
+          nix = {
+              enable = true;
+              installDependencies = true;
+          };
+          python = {
+              enable = true;
+              installDependencies = false;
+              installRuntimeDependencies = false;
+          };
+          markdown = {
+              enable = true;
+              installDependencies = true;
+          };
+          tex = {
+              enable = true;
+              installDependencies = true;
+          };
+          typst = {
+              enable = true;
+              installDependencies = true;
+          };
+          clangd = {
+              enable = true;
+              installDependencies = true;
+          };
         };
     };
 
@@ -122,6 +124,9 @@
     ];
 
     # Extra packages
-    # extraPackages = with pkgs; [];
+    extraPackages = with pkgs; [
+      statix
+      pplatex
+    ];
   };
 }
