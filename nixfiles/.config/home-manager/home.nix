@@ -127,6 +127,7 @@
     extraPackages = with pkgs; [
       statix
       pplatex
+      clang-tools
     ];
   };
 }
