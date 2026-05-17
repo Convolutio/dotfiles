@@ -22,7 +22,11 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     pkgs.stow
+    pkgs.tmux
+    pkgs.xclip
     pkgs.keepassxc
+    pkgs.gitg
+    pkgs.chafa
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
