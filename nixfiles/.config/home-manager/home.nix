@@ -128,6 +128,8 @@
       statix
       pplatex
       clang-tools
+      ruff
+      pyright
     ];
   };
 }
