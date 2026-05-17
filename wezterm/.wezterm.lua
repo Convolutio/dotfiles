@@ -6,8 +6,6 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
-config.default_prog = { "/usr/bin/bash" }
-
 -- Color scheme:
 
 -- wezterm.gui is not available to the mux server, so take care to
