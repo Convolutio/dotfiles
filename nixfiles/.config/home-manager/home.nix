@@ -28,6 +28,9 @@
     pkgs.gitg
     pkgs.chafa
 
+    # Pixi
+    pkgs.pixi
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -88,6 +91,11 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
+    initExtra = ''
+      # pixi completions
+      autoload -Uz compinit && compinit  # redundant with Oh My Zsh
+      eval "$(pixi completion --shell zsh)"
+    '';
   };
   # Starship for cool zsh
   programs.starship = {
