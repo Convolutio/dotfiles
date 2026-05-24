@@ -91,26 +91,17 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    initExtra = ''
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [];
+      theme = "robbyrussell";
+    };
+    initContent = ''
       # pixi completions
       autoload -Uz compinit && compinit  # redundant with Oh My Zsh
       eval "$(pixi completion --shell zsh)"
     '';
-  };
-  # Starship for cool zsh
-  programs.starship = {
-    enable = true;
-    # Configuration written to ~/.config/starship.toml
-    settings = {
-      # add_newline = false;
-
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
-
-      # package.disabled = true;
-    };
   };
 
   # Let Home Manager install and manage itself.
