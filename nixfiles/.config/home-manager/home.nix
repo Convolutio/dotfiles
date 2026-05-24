@@ -1,4 +1,9 @@
-{ config, pkgs, lazyvim, ... }:
+{
+  config,
+  pkgs,
+  lazyvim,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -30,6 +35,9 @@
 
     # Pixi
     pkgs.pixi
+
+    # Typst
+    pkgs.typst
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -93,7 +101,7 @@
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [];
+      plugins = [ ];
       theme = "robbyrussell";
     };
     initContent = ''
@@ -114,39 +122,39 @@
     enable = true;
 
     # Core LazyVim dependencies (git, ripgrep, fd, etc.)
-    installCoreDependencies = true;  # default: true
+    installCoreDependencies = true; # default: true
 
     # Load remaining config from lua files
     configFiles = ./lazyvim-config;
 
     extras = {
-        lang = {
-          nix = {
-              enable = true;
-              installDependencies = true;
-          };
-          python = {
-              enable = true;
-              installDependencies = false;
-              installRuntimeDependencies = false;
-          };
-          markdown = {
-              enable = true;
-              installDependencies = true;
-          };
-          tex = {
-              enable = true;
-              installDependencies = true;
-          };
-          typst = {
-              enable = true;
-              installDependencies = true;
-          };
-          clangd = {
-              enable = true;
-              installDependencies = true;
-          };
+      lang = {
+        nix = {
+          enable = true;
+          installDependencies = true;
         };
+        python = {
+          enable = true;
+          installDependencies = false;
+          installRuntimeDependencies = false;
+        };
+        markdown = {
+          enable = true;
+          installDependencies = true;
+        };
+        tex = {
+          enable = true;
+          installDependencies = true;
+        };
+        typst = {
+          enable = true;
+          installDependencies = true;
+        };
+        clangd = {
+          enable = true;
+          installDependencies = true;
+        };
+      };
     };
 
     # Manual parsers only needed for non-LazyVim languages
@@ -176,16 +184,55 @@
         select = "underline";
       };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-    }];
+    languages = {
+      language-server = {
+        ruff = {
+          command = "ruff"; # the home's ruff or the project-local ruff, if existing
+          args = ["server"];
+        };
+        ty = {
+          command = "ty";
+          args = ["server"];
+          config = {
+              inlayHints.callArgumentNames = false;
+              experimental.rename = true;
+              experimental.autoImport = true;
+          };
+        };
+        tinymist = {
+          command = "${pkgs.tinymist}/bin/tinymist";
+        };
+      };
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+        }
+        {
+          name = "python";
+          language-servers = ["ruff" "ty"];
+          auto-format = true;
+        }
+        {
+          # https://myriad-dreamin.github.io/tinymist/frontend/helix.html
+          name = "typst";
+          language-servers = ["tinymist"];
+        }
+      ];
+    };
     themes = {
       autumn_night_transparent = {
         "inherits" = "autumn_night";
         "ui.background" = { };
       };
     };
+    extraPackages = [
+      pkgs.nil
+      pkgs.nixfmt
+      pkgs.ruff
+      pkgs.ty
+      pkgs.tinymist
+    ];
   };
 }
