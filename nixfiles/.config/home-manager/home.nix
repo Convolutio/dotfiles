@@ -42,6 +42,9 @@
     # Typst
     pkgs.typst
 
+    # Devenv
+    pkgs.devenv
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -111,6 +114,9 @@
       # pixi completions
       autoload -Uz compinit && compinit  # redundant with Oh My Zsh
       eval "$(pixi completion --shell zsh)"
+
+      # devenv auto activation
+      eval "$(devenv hook zsh)"
     '';
   };
 
