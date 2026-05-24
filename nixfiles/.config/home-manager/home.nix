@@ -33,6 +33,9 @@
     pkgs.gitg
     pkgs.chafa
 
+    # Just
+    pkgs.just
+
     # Pixi
     pkgs.pixi
 
@@ -188,15 +191,15 @@
       language-server = {
         ruff = {
           command = "ruff"; # the home's ruff or the project-local ruff, if existing
-          args = ["server"];
+          args = [ "server" ];
         };
         ty = {
           command = "ty";
-          args = ["server"];
+          args = [ "server" ];
           config = {
-              inlayHints.callArgumentNames = false;
-              experimental.rename = true;
-              experimental.autoImport = true;
+            inlayHints.callArgumentNames = false;
+            experimental.rename = true;
+            experimental.autoImport = true;
           };
         };
         tinymist = {
@@ -211,13 +214,16 @@
         }
         {
           name = "python";
-          language-servers = ["ruff" "ty"];
+          language-servers = [
+            "ruff"
+            "ty"
+          ];
           auto-format = true;
         }
         {
           # https://myriad-dreamin.github.io/tinymist/frontend/helix.html
           name = "typst";
-          language-servers = ["tinymist"];
+          language-servers = [ "tinymist" ];
         }
       ];
     };
