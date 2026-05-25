@@ -32,6 +32,7 @@
     pkgs.keepassxc
     pkgs.gitg
     pkgs.chafa
+    pkgs.inkscape
 
     # Just
     pkgs.just
