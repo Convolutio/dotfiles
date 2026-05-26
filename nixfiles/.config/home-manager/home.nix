@@ -33,6 +33,7 @@
     pkgs.gitg
     pkgs.chafa
     pkgs.inkscape
+    pkgs.gimp
 
     # Just
     pkgs.just
