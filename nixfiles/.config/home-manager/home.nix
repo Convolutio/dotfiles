@@ -47,6 +47,13 @@
     # Devenv
     pkgs.devenv
 
+    # Lsp available at home scope
+    pkgs.tinymist
+    pkgs.ruff
+    pkgs.ty
+    pkgs.ltex-ls-plus
+    pkgs.texlab
+    pkgs.bibtex-tidy
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -189,10 +196,20 @@
     defaultEditor = true;
     settings = {
       theme = "catppuccin_mocha";
-      editor.cursor-shape = {
-        normal = "block";
-        insert = "bar";
-        select = "underline";
+      editor = {
+        soft-wrap.enable = true;
+        rulers = [ 81 ]; # no wrapped line will touch the column bar
+        cursor-shape = {
+          normal = "block";
+          insert = "bar";
+          select = "underline";
+        };
+      };
+      keys.normal = {
+        "A-q" = ":reflow";
+      };
+      keys.select = {
+        "A-q" = ":reflow";
       };
     };
     languages = {
@@ -211,7 +228,22 @@
           };
         };
         tinymist = {
-          command = "${pkgs.tinymist}/bin/tinymist";
+          command = "tinymist"; # tinymist shall be sourced in the path
+        };
+        ltex-ls-plus.config = {
+          # WARN: when ltex-ls-plus will be updated on nixpkgs, be careful to
+          # change "fr" to "fr-FR"
+          ltex.ltex-ls.logLevel = "warning";
+          ltex.diagnosticSeverity = "warning";
+          ltex.disabledRules = {
+            "en-US" = [ "PROFANITY" ];
+            "en-GB" = [ "PROFANITY" ];
+          };
+          ltex.dictionary = {
+            "en-US" = [ "builtin" ];
+            "en-GB" = [ "builtin" ];
+            "fr" = [ "builtin" ];
+          };
         };
       };
       language = [
@@ -231,16 +263,24 @@
         {
           # https://myriad-dreamin.github.io/tinymist/frontend/helix.html
           name = "typst";
-          language-servers = [ "tinymist" ];
+          language-servers = [
+            "tinymist"
+            "ltex-ls-plus"
+          ];
+        }
+        {
+          name = "markdown";
+          language-servers = [
+            "marksman"
+            "ltex-ls-plus"
+          ];
         }
       ];
     };
     extraPackages = [
       pkgs.nil
       pkgs.nixfmt
-      pkgs.ruff
-      pkgs.ty
-      pkgs.tinymist
+      pkgs.marksman
     ];
   };
 }
