@@ -6,6 +6,7 @@
 }:
 
 {
+  nixpkgs.config.allowUnfree = true; # for discord and other sources
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "thormas";
@@ -46,6 +47,9 @@
 
     # Devenv
     pkgs.devenv
+
+    pkgs.joplin-desktop
+    pkgs.discord
 
     # Lsp available at home scope
     pkgs.tinymist
