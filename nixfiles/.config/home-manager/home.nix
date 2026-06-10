@@ -118,6 +118,7 @@
     "$HOME/.nix-profile/bin"
     "$HOME/bin"
     "$HOME/.local/bin"
+    "$HOME/.pixi/bin"
   ];
   # Let Home Manager manage the shell
   # Zsh
