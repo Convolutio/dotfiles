@@ -57,6 +57,15 @@
     pkgs.ltex-ls-plus
     pkgs.texlab
     pkgs.bibtex-tidy
+
+    #   Web stack
+    pkgs.typescript
+    pkgs.typescript-language-server
+    pkgs.astro-language-server
+    pkgs.svelte-language-server
+    # WARN: this npm global plugin should be installed
+    # pkgs.typescript-svelte-plugin
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -193,6 +202,16 @@
             "fr" = [ "builtin" ];
           };
         };
+        astro-ls = {
+          command = "astro-ls";
+          args = [ "--stdio" ];
+          config = {
+            typescript = {
+              tsdk = "${pkgs.typescript}/lib";
+            };
+            environment = "node";
+          };
+        };
       };
       language = [
         {
@@ -222,6 +241,11 @@
             "marksman"
             "ltex-ls-plus"
           ];
+        }
+        {
+          name = "astro";
+          auto-format = true;
+          language-servers = [ "astro-ls" ];
         }
       ];
     };
