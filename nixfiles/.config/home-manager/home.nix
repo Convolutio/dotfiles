@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lazyvim,
   ...
 }:
 
@@ -137,62 +136,7 @@
   programs.home-manager.enable = true;
 
   # Imports
-  imports = [ lazyvim.homeManagerModules.default ];
-
-  # ----------------- LazyVim -----------------
-  programs.lazyvim = {
-    enable = true;
-
-    # Core LazyVim dependencies (git, ripgrep, fd, etc.)
-    installCoreDependencies = true; # default: true
-
-    # Load remaining config from lua files
-    configFiles = ./lazyvim-config;
-
-    extras = {
-      lang = {
-        nix = {
-          enable = true;
-          installDependencies = true;
-        };
-        python = {
-          enable = true;
-          installDependencies = false;
-          installRuntimeDependencies = false;
-        };
-        markdown = {
-          enable = true;
-          installDependencies = true;
-        };
-        tex = {
-          enable = true;
-          installDependencies = true;
-        };
-        typst = {
-          enable = true;
-          installDependencies = true;
-        };
-        clangd = {
-          enable = true;
-          installDependencies = true;
-        };
-      };
-    };
-
-    # Manual parsers only needed for non-LazyVim languages
-    treesitterParsers = with pkgs.vimPlugins.nvim-treesitter.grammarPlugins; [
-      bash
-    ];
-
-    # Extra packages
-    extraPackages = with pkgs; [
-      statix
-      pplatex
-      clang-tools
-      ruff
-      pyright
-    ];
-  };
+  imports = [ ];
 
   # ----------------- Helix -----------------
   programs.helix = {
