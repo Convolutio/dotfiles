@@ -46,6 +46,7 @@
 
     # Devenv
     pkgs.devenv
+    pkgs.secretspec
 
     pkgs.joplin-desktop
     pkgs.discord
