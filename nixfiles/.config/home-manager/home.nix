@@ -44,9 +44,8 @@
     # Typst
     pkgs.typst
 
-    # Devenv
-    pkgs.devenv
-    pkgs.secretspec
+    # Dev env management (system deps, language deps, processes, tasks, secrets)
+    pkgs.mise
 
     pkgs.joplin-desktop
     pkgs.discord
