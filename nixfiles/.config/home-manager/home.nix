@@ -136,9 +136,6 @@
       # pixi completions
       autoload -Uz compinit && compinit  # redundant with Oh My Zsh
       eval "$(pixi completion --shell zsh)"
-
-      # devenv auto activation
-      eval "$(devenv hook zsh)"
     '';
   };
 
