@@ -136,6 +136,8 @@
       # pixi completions
       autoload -Uz compinit && compinit  # redundant with Oh My Zsh
       eval "$(pixi completion --shell zsh)"
+      # mise-en-place activation
+      eval "$(mise activate zsh)"
     '';
   };
 
