@@ -44,6 +44,7 @@ in
     pkgs.chafa
     pkgs.inkscape
     pkgs.gimp
+    pkgs.imagemagick
 
     # Just
     pkgs.just
