@@ -8,7 +8,8 @@ let
     pkgs.texliveSmall.withPackages (
       ps: with ps; [
         # INFO: add here all the missing texlive packages
-        latexmk
+        latexmk # latex builder
+        type1cm # to measure bounding boxes around included graphics
       ]
     )
   );
