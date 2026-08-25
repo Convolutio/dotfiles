@@ -3,7 +3,15 @@
   pkgs,
   ...
 }:
-
+let
+  tex = (
+    pkgs.texliveSmall.withPackages (
+      ps: with ps; [
+        # INFO: add here all the missing texlive packages
+      ]
+    )
+  );
+in
 {
   nixpkgs.config.allowUnfree = true; # for discord and other sources
   # Home Manager needs a bit of information about you and the paths it should
@@ -43,6 +51,9 @@
 
     # Typst
     pkgs.typst
+
+    # Latex
+    tex
 
     # Dev env management (system deps, language deps, processes, tasks, secrets)
     pkgs.mise
