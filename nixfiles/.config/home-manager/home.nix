@@ -8,6 +8,7 @@ let
     pkgs.texliveSmall.withPackages (
       ps: with ps; [
         # INFO: add here all the missing texlive packages
+        latexmk
       ]
     )
   );
