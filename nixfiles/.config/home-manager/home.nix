@@ -257,6 +257,13 @@ in
           ];
         }
         {
+          name = "latex";
+          language-servers = [
+            "texlab"
+            "ltex-ls-plus"
+          ];
+        }
+        {
           name = "astro";
           auto-format = true;
           language-servers = [ "astro-ls" ];
