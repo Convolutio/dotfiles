@@ -5,13 +5,15 @@
 }:
 let
   tex = (
-    pkgs.texliveSmall.withPackages (
-      ps: with ps; [
-        # INFO: add here all the missing texlive packages
+    pkgs.texlive.combine {
+      inherit (pkgs.texlive)
+        scheme-medium
         latexmk # latex builder
         type1cm # to measure bounding boxes around included graphics
-      ]
-    )
+        beamertheme-focus
+        appendixnumberbeamer
+        ;
+    }
   );
 in
 {
