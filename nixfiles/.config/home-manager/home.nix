@@ -5,15 +5,19 @@
 }:
 let
   tex = (
-    pkgs.texlive.combine {
-      inherit (pkgs.texlive)
-        scheme-medium
+    pkgs.texliveMedium.withPackages (
+      ps: with ps; [
         latexmk # latex builder
         type1cm # to measure bounding boxes around included graphics
         beamertheme-focus
         appendixnumberbeamer
-        ;
-    }
+        fira
+      ]
+    )
+    # TODO: find a way to add the code below
+    #   pkgs.texliveMedium.overrideAttrs = {
+    #     withDocs = true;
+    #   };
   );
 in
 {
