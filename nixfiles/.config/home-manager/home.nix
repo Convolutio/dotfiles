@@ -58,9 +58,6 @@ in
     # Just
     pkgs.just
 
-    # Pixi
-    pkgs.pixi
-
     # Typst
     pkgs.typst
 
