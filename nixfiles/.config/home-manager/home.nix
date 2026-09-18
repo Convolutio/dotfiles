@@ -5,13 +5,22 @@
 }:
 let
   tex = (
-    pkgs.texliveSmall.withPackages (
+    pkgs.texliveMedium.withPackages (
       ps: with ps; [
-        # INFO: add here all the missing texlive packages
         latexmk # latex builder
         type1cm # to measure bounding boxes around included graphics
+        # Focus Presentation theme for beamer
+        beamertheme-focus
+        appendixnumberbeamer
+        fira
+        firamath-otf
+        fontaxes
       ]
     )
+    # TODO: find a way to add the code below
+    #   pkgs.texliveMedium.overrideAttrs = {
+    #     withDocs = true;
+    #   };
   );
 in
 {
@@ -48,9 +57,6 @@ in
 
     # Just
     pkgs.just
-
-    # Pixi
-    pkgs.pixi
 
     # Typst
     pkgs.typst
