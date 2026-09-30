@@ -9,12 +9,15 @@ let
       ps: with ps; [
         latexmk # latex builder
         type1cm # to measure bounding boxes around included graphics
+        glossaries # glossaries
         # Focus Presentation theme for beamer
         beamertheme-focus
         appendixnumberbeamer
         fira
         firamath-otf
         fontaxes
+        # XCharter font for cover letters
+        xcharter
       ]
     )
     # TODO: find a way to add the code below
