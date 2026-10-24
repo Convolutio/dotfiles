@@ -162,6 +162,8 @@ in
       eval "$(pixi completion --shell zsh)"
       # mise-en-place activation
       eval "$(mise activate zsh)"
+      # direnv hook
+      eval "$(direnv hook zsh)"
     '';
   };
 
