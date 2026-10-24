@@ -69,6 +69,7 @@ in
 
     # Dev env management (system deps, language deps, processes, tasks, secrets)
     pkgs.mise
+    pkgs.direnv
 
     pkgs.joplin-desktop
     pkgs.discord
