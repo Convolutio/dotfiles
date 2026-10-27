@@ -9,7 +9,6 @@ let
       ps: with ps; [
         latexmk # latex builder
         type1cm # to measure bounding boxes around included graphics
-        glossaries # glossaries
         # Focus Presentation theme for beamer
         beamertheme-focus
         appendixnumberbeamer
@@ -18,6 +17,20 @@ let
         fontaxes
         # XCharter font for cover letters
         xcharter
+        # french
+        numprint
+        hyphenat
+        # scientific paper
+        doi
+        glossaries
+        # figures in SVG format
+        svg
+        xcolor
+        transparent
+        catchfile
+        # project management
+        todonotes
+        pgfgantt
       ]
     )
     # TODO: find a way to add the code below
