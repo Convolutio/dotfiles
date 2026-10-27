@@ -67,6 +67,12 @@ in
     # Latex
     tex
 
+    # Markdown previewer
+    pkgs.glow
+
+    # Bibliography manager
+    pkgs.zotero
+
     # Dev env management (system deps, language deps, processes, tasks, secrets)
     pkgs.mise
     pkgs.direnv
