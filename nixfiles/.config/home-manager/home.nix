@@ -61,6 +61,7 @@ in
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    pkgs.git
     pkgs.stow
     pkgs.tmux
     pkgs.xclip
@@ -84,7 +85,8 @@ in
     pkgs.glow
 
     # Bibliography manager
-    pkgs.zotero
+    # TODO: enable it when an update will occur after the sensitive firefox fix
+    # pkgs.zotero
 
     # Dev env management (system deps, language deps, processes, tasks, secrets)
     pkgs.mise
@@ -191,6 +193,12 @@ in
 
   # Imports
   imports = [ ];
+
+  # ----------------- Git -----------------
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   # ----------------- Helix -----------------
   programs.helix = {
